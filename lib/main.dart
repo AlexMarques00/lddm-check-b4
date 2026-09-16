@@ -4,7 +4,6 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: MyApp(futuro: carregarHabitos()),
       home: MyApp(),
     ),
   );
@@ -44,11 +43,27 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ListTile(
-          title: Text("menor: " + menorAlbum(albuns).toString() + " faixas"),
+          title: Text("menor: ${menorAlbum(albuns)} faixas"),
           tileColor: Colors.blue,
         ),
       ],
-    )
+    ),
+    bottomNavigationBar: BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: "Início"
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: "Favoritos"
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: "Perfil"
+        )
+      ],
+    ),
 
   );
 }
@@ -70,24 +85,3 @@ String menorAlbum(List<Album> albuns){
     }
   return menor.toString();
 }
-
-/*
-1. Barra superior com o título Álbuns e um ícone de ação à
-direita.
-
-2. Abaixo da lista, uma faixa de resumo com o menor número
-de faixas entre os álbuns, no formato menor: 9 faixas.
-
-3. Lista rolável com três itens.
-
-4. Cada item tem um ícone à esquerda, um título e uma linha
-secundária no formato Artista · N faixas.
-
-5. Os dados dos três itens ficam em uma estrutura de dados
-separada da descrição da interface. O valor da faixa de
-resumo deve ser calculado a partir dessa estrutura. Não
-escreva o número à mão.
-
-6. Sem interação: tocar em um item ou no ícone da barra não
-faz nada. 
-*/
